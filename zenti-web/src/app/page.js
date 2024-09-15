@@ -1,7 +1,15 @@
+"use client"
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import styles from "./page.module.css";
 
 export default function Home() {
+  const router = useRouter();
+
+  const handleRedirect = () => {
+    router.push('/monitoring');
+  };
+
   return (
     <div className={styles.container}>
       <video autoPlay muted loop playsInline className={styles.backgroundVideo}>
@@ -18,7 +26,7 @@ export default function Home() {
           <p className={styles.description}>
             Bienvenidos a Zenti, donde la creatividad y la tecnología se fusionan para ofrecer soluciones modernas y minimalistas.
           </p>
-          <button className={styles.button}>Ingresar</button>
+          <button className={styles.button} onClick={handleRedirect}>Ingresar</button>
         </div>
       </div>
     </div>
