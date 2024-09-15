@@ -1,8 +1,11 @@
 import React from 'react'
+import StatusCard from "@/components/drivercard.jsx"
 
 function page() {
   return (
-    <div>page</div>
+    <div>
+      <StatusCard></StatusCard>
+    </div>
   )
 }
 

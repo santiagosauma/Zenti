@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Londrina+Solid:wght@100;300;400;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Londrina+Solid:wght@100;300;400;900&family=M+PLUS+Rounded+1c&display=swap');
-
 .sidebar {
   height: 100vh;
   background-color: #0A89A6;
@@ -8,59 +5,67 @@
   display: flex;
   flex-direction: column;
   transition: width 0.3s;
+  width: 60px;
 }
 
 .open {
-  width: 250px;
+  width: 200px;
 }
 
 .closed {
-  width: 80px;
+  width: 60px;
 }
 
 .logoContainer {
   display: flex;
   align-items: center;
-  gap: 25px;
-  padding: 0px;
+  gap: 15px;
+  padding: 0;
   background-color: #231D26;
+  justify-content: center;
 }
 
-.toggleButton {
-  background: none;
-  border: none;
+.logo {
   cursor: pointer;
+  transition: 0.4s;
+}
+
+.open .logo {
+  width: 80px;
+  height: 80px;
+}
+
+.closed .logo {
+  width: 60px;
+  height: 60px;
 }
 
 .menu {
   list-style: none;
   padding: 0;
   margin: 0;
-
-
 }
 
 .menu li {
   display: flex;
   align-items: center;
-
+  justify-content: center;
   transition: background-color 0.2s;
   font-family: 'Rounded Mplus 1c', sans-serif;
-  font-size: 1.1em;
+  font-size: 1.0em;
   font-weight: bold;
 }
 
 .openMenuItem {
-  padding: 15px 20px;
+  padding: 10px 15px;
 }
 
 .closedMenuItem {
-  padding: 15px 18.5px;
+  padding: 10px 10px;
 }
 
 .menu li.active {
   background-color: #1a1e22d4;
-
 }
 
 .menu li:hover {
@@ -70,13 +75,14 @@
 .menu a {
   display: flex;
   align-items: center;
+  justify-content: center;
   text-decoration: none;
   color: #FFF;
 }
 
 .menu a span {
   margin-left: 15px;
-  font-size: 1.1em;
+  font-size: 1.0em;
   font-weight: bold;
 }
 
@@ -85,12 +91,11 @@
   align-items: center;
   padding: 5px;
   background-color: #1F3144;
-  margin-top: auto; /* Mueve el perfil al fondo */
+  margin-top: auto;
 }
 
-.profileOpen{
- 
-    gap: 15px;
+.profileOpen {
+  gap: 15px;
 }
 
 .profileClosed {
@@ -100,25 +105,26 @@
   gap: 15px;
 }
 
-.username{
-    font-family: 'Rounded Mplus 1c', sans-serif;
-    font-weight: bold;
+.username {
+  font-family: 'Rounded Mplus 1c', sans-serif;
+  font-weight: bold;
 }
 
-.role{
-    font-size: 0.9rem;
+.role {
+  font-size: 0.9rem;
 }
-.pfp{
-    margin-top: 10px;
 
+.pfp {
+  margin-top: 10px;
 }
-.pfp:hover{
-    transform: scale(1.1);
-    transition: 0.4s;
 
+.pfp:hover {
+  transform: scale(1.1);
+  transition: 0.4s;
 }
+
 .profileInfo {
-  margin-top: 10px; /* Añade un margen superior para separar el texto de la imagen */
+  margin-top: 10px;
 }
 
 .profileInfo p {
@@ -126,43 +132,34 @@
 }
 
 .logout {
-  margin-top: 10px; /* Añade un margen superior para separar el icono de cierre de sesión del perfil */
+  margin-top: 10px;
   cursor: pointer;
   background-color: #1F3144;
   border: none;
 }
 
 .logout:hover {
- scale: 1.2;
-    transition: 0.4s;
+  scale: 1.2;
+  transition: 0.4s;
 }
 
 .menuItemText {
-    color: #FFF;
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: opacity 0.3s, transform 0.3s;
+  color: #FFF;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.3s, transform 0.3s;
   font-family: 'Rounded Mplus 1c', sans-serif;
 }
 
 .open .menuItemText {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  opacity: 1;
+  transform: translateX(0);
+}
 
 .menu li.active .menuItemText {
-  color: #F28627; /* Color del texto cuando el elemento está activo */
+  color: #F28627;
 }
 
 .menu li:hover .menuItemText {
-  color: #F28627; /* Color del texto cuando el elemento está en hover */
-}
-
-.logo{
-  cursor: pointer;
-  transition: 0.4s;
-}
-
-.logo:hover{
-  transform: scale(1.1);
+  color: #F28627;
 }
