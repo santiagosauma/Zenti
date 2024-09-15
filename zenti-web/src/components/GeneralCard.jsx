@@ -1,15 +1,7 @@
 import Image from "next/image";
 import styles from '@/styles/GeneralCard.module.css';
 
-const GeneralCard = () => {
-  const data = {
-    name: "Francisco",
-    id: "ZSDSXDE",
-    status: "In Time",
-    contact: "+52 2424252892",
-    imageUrl: "/Camiones.png"
-  };
-
+const GeneralCard = ({ progress = 0, data }) => {
   return (
     <div className={styles.card}>
       <div className={styles.details}>
@@ -24,7 +16,7 @@ const GeneralCard = () => {
                 r="28"
                 style={{
                   strokeDasharray: 2 * Math.PI * 28,
-                  strokeDashoffset: 2 * Math.PI * 28 * ((100 - 75) / 100),
+                  strokeDashoffset: 2 * Math.PI * 28 * ((100 - progress) / 100),
                 }}
               />
             </svg>

@@ -4,6 +4,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { renderToStaticMarkup } from 'react-dom/server';
+import GeneralCard from '@/components/GeneralCard';
 
 const TEC_MONTERREY = { lat: 25.65119, lng: -100.28713 };
 
@@ -11,7 +12,7 @@ const calculateDistance = (point1, point2) => {
   const toRad = (value) => (value * Math.PI) / 180;
   const R = 6371;
   const dLat = toRad(point2.lat - point1.lat);
-  const dLon = toRad(point1.lng - point2.lng);
+  const dLon = toRad(point2.lng - point1.lng);
   const lat1 = toRad(point1.lat);
   const lat2 = toRad(point2.lat);
 
@@ -52,6 +53,7 @@ const MapComponent = () => {
   const [markers, setMarkers] = useState([TEC_MONTERREY]);
   const [optimizedMarkers, setOptimizedMarkers] = useState([]);
   const [routePolyline, setRoutePolyline] = useState(null);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     if (mapRef.current) return;
@@ -96,6 +98,13 @@ const MapComponent = () => {
         .openPopup();
     });
   }, []);
+
+  useEffect(() => {
+    const completedMarkers = markers.filter(marker => marker.isCompleted).length;
+    const totalMarkers = markers.length;
+    const newProgress = totalMarkers > 1 ? Math.round((completedMarkers / (totalMarkers - 1)) * 100) : 0;
+    setProgress(newProgress);
+  }, [markers]);
 
   const getMarkerColor = (index, isCompleted, isLast) => {
     if (index === 0) {
@@ -185,6 +194,7 @@ const MapComponent = () => {
   const cleanMarkers = () => {
     setMarkers([TEC_MONTERREY]);
     setOptimizedMarkers([]);
+    setProgress(0);
 
     mapRef.current.eachLayer((layer) => {
       if (layer instanceof L.Marker || layer instanceof L.Polyline) {
@@ -211,32 +221,63 @@ const MapComponent = () => {
   };
 
   const refreshMarkers = () => {
-    renderMarkers(optimizedMarkers.length > 0 ? optimizedMarkers : markers);
+    renderMarkers(markers);
+  };
+
+  const handleCheckboxChange = (index) => {
+    toggleMarkerCompletion(index);
+  };
+
+  const mockData = {
+    imageUrl: "/Camiones.png",
+    name: "Truck 1",
+    id: "T001",
+    status: "En ruta",
+    contact: "John Doe"
   };
 
   return (
-    <div style={{ width: '100%', textAlign: 'center' }}>
-      {/* Aquí está la topbar añadida */}
+    <div style={{ width: '100%', backgroundColor: '#CCDEEB', padding: '0' }}>
       <div className="topbar">
         Monitoring
       </div>
-      <div style={{ marginBottom: '10px' }}>
-        <button onClick={generateRoute}>Generar Ruta</button>
-        <button onClick={cleanMarkers}>Clean</button>
-        <button onClick={refreshMarkers}>Refresh</button>
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
+        <button className="styledButton" onClick={generateRoute}>Generar Ruta</button>
+        <button className="styledButton" onClick={cleanMarkers}>Clean</button>
+        <button className="styledButton" onClick={refreshMarkers}>Refresh</button>
       </div>
-      <div id="map" style={{ width: '50%', height: '50vh', margin: '0 auto' }}></div>
-      <div>
-        {markers.slice(1).map((marker, index) => (
-          <div key={index + 1}>
-            <span>Marcador {index + 1}: Completado - {marker.isCompleted ? 'Sí' : 'No'}</span>
-            <button onClick={() => toggleMarkerCompletion(index + 1)}>
-              Cambiar Completado
-            </button>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', gap: '20px' }}>
+        <div id="map" style={{ width: '60%', height: '70vh' }}></div>
+        <div style={{ width: '30%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <GeneralCard progress={progress} data={mockData} />
+          <GeneralCard progress={null} data={mockData} />
+          <GeneralCard progress={null} data={mockData} />
+          <div style={{ maxHeight: '50vh', overflowY: 'auto', padding: '10px', backgroundColor: 'white', borderRadius: '10px' }}>
+            {markers.slice(1).map((marker, index) => (
+              <div
+                key={index + 1}
+                style={{
+                  color: 'black',
+                  marginBottom: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                <span style={{ marginRight: '20px' }}>Destino {index + 1}</span>
+                <input
+                  type="checkbox"
+                  checked={marker.isCompleted}
+                  onChange={() => handleCheckboxChange(index + 1)}
+                />
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
       <style jsx>{`
+        body {
+          background-color: #CCDEEB;
+        }
         .topbar {
           background-color: orange;
           color: white;
@@ -245,6 +286,27 @@ const MapComponent = () => {
           font-size: 24px;
           text-align: left;
           width: 100%;
+          margin: 0;
+        }
+        .styledButton {
+          background-color: #F28627;
+          border: none;
+          border-radius: 12px;
+          padding: 10px 20px;
+          font-size: 18px;
+          font-family: 'Roboto', sans-serif;
+          color: white;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+          margin: 10px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .styledButton:hover {
+          box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        #map {
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
       `}</style>
     </div>
