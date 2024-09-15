@@ -34,9 +34,9 @@ export default function SideBar() {
   };
 
   const menuItems = [
-    { name: "Monitoring", icon: "/sidebar/maps.png", route: "/monitoring" },
+    { name: "Routing", icon: "/sidebar/maps.png", route: "/monitoring" },
     { name: "Vehicles", icon: "/sidebar/deliveries.png", route: "/vehicles" },
-    { name: "Routing", icon: "/sidebar/box.png", route: "/routing" },
+    { name: "Packaging", icon: "/sidebar/box.png", route: "/routing" },
   ];
 
   return (
