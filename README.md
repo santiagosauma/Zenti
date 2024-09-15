@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zenti – 🚗 Prevención de Accidentes Viales con Visión Computacional y Análisis Predictivo
 
-## Getting Started
+## Descripción
+Zenti es una solución innovadora que utiliza visión computacional avanzada y un sistema de análisis predictivo para monitorear en tiempo real el estado de los conductores, detectar señales de fatiga y distracciones, y predecir la probabilidad de accidentes viales. Esta herramienta tiene como objetivo mejorar la seguridad de los conductores, reducir los accidentes y optimizar rutas para una mayor eficiencia. 🛡️
 
-First, run the development server:
+## Características
+- **Monitoreo en Tiempo Real**: Detección de fatiga, somnolencia y falta de concentración mediante cámaras con visión computacional. 📹
+- **Predicción de Accidentes**: Utiliza un modelo de autoencoding para evaluar la probabilidad de accidentes basados en métricas recogidas en tiempo real. 🔮
+- **Optimización de Rutas**: Selección de rutas más seguras y eficientes según los historiales de los conductores. 🗺️
+- **Sistema de Recomendaciones**: Proporciona alertas y recomendaciones para reducir riesgos de accidentes. ⚠️
+- **Dashboard**: Interfaz web para visualizar métricas de rendimiento, rutas de los conductores y análisis de seguridad en tiempo real. 📊
 
+## Tecnologías Utilizadas
+### Frontend
+- **Next.js**: Framework de React para la construcción de la aplicación web. 🌐
+- **React**: Biblioteca para la creación de interfaces de usuario. 🔄
+- **CSS**: Para el diseño y la personalización de la interfaz de usuario. 🎨
+
+### Backend
+- **Python**: Usado para el sistema de visión computacional y análisis predictivo. 🐍
+- **TensorFlow**: Utilizado para entrenar el modelo de predicción de accidentes. 🤖
+- **OpenVino**: Optimizador de modelos para mejorar el rendimiento de la visión computacional. 🚀
+- **Supabase**: API de base de datos para la intercomunicación del sistema. 📦
+
+### APIs y Librerías
+- **Geoapify**: Para la integración de mapas y rutas en la interfaz web. 🗺️
+- **Frida de Softtekk**: Sistema de recomendaciones basado en datos recolectados en tiempo real. 💡
+
+## Instalación
+### Requisitos Previos
+- Node.js
+- Python 3.x
+- TensorFlow
+- Supabase CLI (opcional)
+
+### Clonar el Repositorio
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+git clone https://github.com/usuario/zenti.git
