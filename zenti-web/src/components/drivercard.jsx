@@ -1,31 +1,31 @@
 import styles from '@/styles/card.module.css';
 
-const StatusCard = () => {
-  const data = {
-    id: "XZLYB3",
-    name: "Fernando Balleza",
-    status: "Still",
-    performance: "Terrible",
-    location: "Junco de la Vega",
-    contact: "55 2345 2321",
-    progress: 30,
-    imageUrl: "https://via.placeholder.com/100"
-  };
+const StatusCard = ({ truck }) => {
+  const {
+    vehicleId,
+    plate,
+    startTime,
+    status,
+    currentLocation,
+    conductor,
+    routeProgress
+  } = truck;
 
   return (
     <div className={styles.card}>
       <div className={styles.header}>
-        <h3>{data.id} - {data.name}</h3>
+        <h3>{vehicleId} - {conductor.name}</h3>
       </div>
       <div className={styles.details}>
         <div className={styles.imageContainer}>
-          <img src={data.imageUrl} alt={data.name} className={styles.image}/>
+          <img src={conductor.image} alt={conductor.name} className={styles.image} />
         </div>
         <div className={styles.info}>
-          <p><strong>Status:</strong> {data.status}</p>
-          <p><strong>Performance:</strong> {data.performance}</p>
-          <p><strong>Location:</strong> {data.location}</p>
-          <p><strong>Contact:</strong> {data.contact}</p>
+          <p><strong>Plate:</strong> {plate}</p>
+          <p><strong>Status:</strong> {status}</p>
+          <p><strong>Start Time:</strong> {startTime}</p>
+          <p><strong>Location:</strong> {currentLocation.lat}, {currentLocation.long}</p>
+          <p><strong>Contact:</strong> {conductor.contact}</p>
         </div>
       </div>
       <div className={styles.progressContainer}>
@@ -33,9 +33,10 @@ const StatusCard = () => {
         <div className={styles.progressBar}>
           <div
             className={styles.progress}
-            style={{ width: `${data.progress}%` }}
+            style={{ width: `${(routeProgress.delivered / routeProgress.total) * 100}%` }}
           ></div>
         </div>
+        <p>{routeProgress.delivered} of {routeProgress.total} packages delivered</p>
       </div>
     </div>
   );

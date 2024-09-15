@@ -1,0 +1,59 @@
+.filterContainer {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #EBD5CC;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.46);
+    gap: 14px;
+    height: 13vh;
+    position: sticky; /* Hacer que el header sea pegajoso */
+    top: 0; /* Pegarlo a la parte superior */
+    margin: 0;
+    z-index: 1000; /* Asegurarse de que esté por encima del contenido desplazable */
+  }
+  
+  .filterRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .filterGroup {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+  }
+
+  .filterGroup label {
+
+    color: black;
+    font-size: 1.4rem;
+  }
+  
+  .filterInput {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    color: black;
+    background-color: white;
+  }
+  
+  .resetButton {
+    padding: 10px 20px;
+    background-color: #FF7F50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer; 
+    margin-top: 20px;
+  }
+  
+
+  .truckList{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 1rem;
+    height: calc(100vh - 8vh); /* Resta la altura del header */
+    overflow-y: auto; /* Permitir desplazamiento vertical */
+    padding: 1rem;
+  }

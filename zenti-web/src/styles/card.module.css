@@ -1,11 +1,12 @@
 .card {
-    width: 300px;
+    width: 400px;
     border: 2px solid rgba(255, 0, 0, 0.3);
     border-radius: 12px;
     padding: 10px;
     background-color: #fef8e8;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
+    height: 35vh;
   }
   
   .header {
