@@ -1,0 +1,98 @@
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f0e3;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 120px;
+  }
+  
+  .details {
+    display: flex;
+    align-items: center;
+  }
+  
+  .imageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .circularProgress {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .progressRing {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg);
+  }
+  
+  .progressBackground {
+    fill: none;
+    stroke: #ddd;
+    stroke-width: 4;
+  }
+  
+  .progressForeground {
+    fill: none;
+    stroke: #00c853;
+    stroke-width: 4;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.35s;
+  }
+  
+  .imageWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    border-radius: 50%;
+    width: 52px;  /* Ahora ocupa un poco menos del diámetro de 60px */
+    height: 52px; /* Ajustado también */
+  }
+  
+  .image {
+    border-radius: 50%;
+  }
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 25px;
+  }
+  
+  .name {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .id {
+    font-size: 1.1em;
+    color: #000;
+  }
+  
+  .status {
+    font-size: 1.1em;
+    color: #00c853;
+    font-weight: bold;
+  }
+  
+  .contact {
+    font-size: 1.1em;
+    color: #000;
+    margin-top: 5px;
+  }
+  
